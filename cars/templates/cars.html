@@ -1,4 +1,3 @@
-
 {% extends "base.html" %}
 
 {% block content %}
@@ -20,6 +19,19 @@
       text-align: center;
       transition: all 0.3s ease;
       padding-bottom: 10px;
+      cursor: pointer; /* deixa mais interativo */
+    }
+
+    /* ✨ EFEITO HOVER (subir + relevo) */
+    .car-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    /* ✨ EFEITO AO CLICAR */
+    .car-card:active {
+      transform: translateY(-4px) scale(0.98);
+      box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
     }
 
     .car-card img {
@@ -45,29 +57,29 @@
     }
 
     form {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-bottom: 20px;
-        padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 20px;
+      padding: 20px;
     }
 
     input[type="text"] {
-        padding: 10px;
-        font-size: 16px;
-        border: 2px solid #e3e1e1;
-        border-radius: 4px;
-        margin-right: 10px;
+      padding: 10px;
+      font-size: 16px;
+      border: 2px solid #e3e1e1;
+      border-radius: 4px;
+      margin-right: 10px;
     }
 
     button[type="submit"] {
-        background-color: #0096c7;
-        color: #fff;
-        border: none;
-        padding: 10px 20px;
-        font-size: 16px;
-        border-radius: 4px;
-        cursor: pointer;
+      background-color: #0096c7;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 4px;
+      cursor: pointer;
     }
   </style>
 
@@ -92,7 +104,9 @@
         </div>
       {% endfor %}
     {% else %}
-      <p style="text-align: center; width: 100%; grid-column: 1 / -1;">Nenhum carro encontrado.</p>
+      <p style="text-align: center; width: 100%; grid-column: 1 / -1;">
+        Nenhum carro encontrado.
+      </p>
     {% endif %}
   </div>
 {% endblock %}
