@@ -76,21 +76,22 @@
       <ul>
         <!-- Se tiver logado -->
         {% if user.is_authenticated %} <!-- Verifica se o usuário está autenticado/logado -->
+
             <li>Olá, {{ user.username }}</li> <!-- Exibe o nome do usuário ao logar -->
             <li><a href="{% url 'new_car' %}">Cadastrar Carro</a></li> <!-- Exibe o menu "Cadastrar Carro" apenas para usuários logados -->
+            <li><a href="{% url 'logout' %}">Sair</a></li>
+
         {% endif %}
 
         <!-- Se não estiver logado -->
         {% if not user.is_authenticated %} <!-- Verifica se o usuário não está autenticado/logado -->
+
             <li><a href="{% url 'register' %}">Cadastre-se</a></li> <!-- Exibe o menu "Cadastre-se" apenas para usuários não logados -->
             <li><a href="{% url 'login' %}">Login</a></li> <!-- Exibe o menu "Login" apenas para usuários não logados -->
+
         {% endif %}
 
-        <li><a href="{% url 'cars_list' %}">Carro</a></li>
-        
-        {% if user.is_authenticated %}
-            <li><a href="{% url 'logout' %}">Sair</a></li>
-        {% endif %}
+        <li><a href="{% url 'cars_list' %}">Carro</a></li> <!-- Exibe o menu "Carro" para todos os usuários, independentemente de estarem logados ou não -->
       </ul>
     </nav>
   </header>
