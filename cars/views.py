@@ -1,6 +1,8 @@
 from cars.models import Car
 from cars.forms import CarModelForm
 from django.urls import reverse
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
 
 
@@ -21,6 +23,12 @@ class CarsListView(ListView):
         return cars  # Retorna a queryset de carros filtrada para ser usada no template
 
 
+class CarDetailView(DetailView):
+    model = Car
+    template_name = "car_detail.html"
+
+
+@method_decorator(login_required(login_url="/login/"), name='dispatch')  # Garante que o usuário esteja logado para acessar as views de criação, edição e exclusão de carros
 class newCarCreateView(CreateView):
     model = Car
     form_class = CarModelForm
@@ -28,11 +36,7 @@ class newCarCreateView(CreateView):
     success_url = "/cars/"  # Redireciona para a lista de carros após criar um novo carro
 
 
-class CarDetailView(DetailView):
-    model = Car
-    template_name = "car_detail.html"
-
-
+@method_decorator(login_required(login_url="/login/"), name='dispatch')
 class CarUpdateView(UpdateView):
     model = Car
     form_class = CarModelForm
@@ -44,6 +48,7 @@ class CarUpdateView(UpdateView):
         # rever_lazy da menos erros, mas o reverse é mais simples e direto para redirecionar
 
 
+@method_decorator(login_required(login_url="/login/"), name='dispatch')
 class CarDeleteView(DeleteView):
     model = Car
     template_name = "car_delete.html"
