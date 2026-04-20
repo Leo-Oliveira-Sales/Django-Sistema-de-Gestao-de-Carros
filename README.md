@@ -54,26 +54,26 @@ A aplicação implementa operações completas de CRUD e utiliza recursos do Dja
 ## 🚀 Como executar o projeto
 
 
-# Clone o repositório
+#### Clone o repositório
 git clone 
 
-# Entre na pasta
+#### Entre na pasta
 cd carros
 
-# Crie o ambiente virtual
+#### Crie o ambiente virtual
 python -m venv venv
 
-# Ative o ambiente
+#### Ative o ambiente
 venv\Scripts\activate  # Windows
-# source venv/bin/activate  # Linux/Mac
+source venv/bin/activate  # Linux/Mac
 
-# Instale as dependências
+#### Instale as dependências
 pip install -r requirements.txt
 
-# Execute as migrações
+#### Execute as migrações
 python manage.py migrate
 
-# Rode o servidor
+#### Rode o servidor
 python manage.py runserver
 
 🌐 **Acesso**
