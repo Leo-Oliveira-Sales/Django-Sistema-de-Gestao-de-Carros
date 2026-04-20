@@ -23,3 +23,16 @@ class Car(models.Model):
 
     def __str__(self):
         return self.model # Vai retornar o nome do modelo do carro, e não mais Car object (1), Car object (2) etc.
+
+
+class CarInventory(models.Model):
+    cars_count = models.IntegerField()
+    cars_value = models.FloatField()
+    created_at = models.DateTimeField(auto_now_add=True) # auto_now_add=True define que o campo será preenchido automaticamente com a data e hora atual quando o objeto for criado.
+
+
+    class Meta:
+        ordering = ['-created_at'] # Ordena os objetos por data de criação, do mais recente para o mais antigo/decrescente.
+
+    def __str__(self):
+        return f"{self.cars_count} - {self.cars_value}" # Vai retornar a quantidade de carros e o valor total do inventário, por exemplo: "10 - 50000.0".
