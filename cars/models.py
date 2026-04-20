@@ -20,6 +20,7 @@ class Car(models.Model):
     plate = models.CharField(max_length=10, blank=True, null=True) 
     value = models.FloatField(blank=True, null=True) 
     photo = models.ImageField(upload_to='cars/', blank=True, null=True) # ImageField é um campo de imagem, upload_to é o diretório onde as imagens serão armazenadas
+    bio = models.TextField(blank=True, null=True) # TextField é um campo de texto, ideal para descrições mais longas. DESCRIÇÃO DO CARRO
 
     def __str__(self):
         return self.model # Vai retornar o nome do modelo do carro, e não mais Car object (1), Car object (2) etc.
@@ -29,7 +30,6 @@ class CarInventory(models.Model):
     cars_count = models.IntegerField()
     cars_value = models.FloatField()
     created_at = models.DateTimeField(auto_now_add=True) # auto_now_add=True define que o campo será preenchido automaticamente com a data e hora atual quando o objeto for criado.
-
 
     class Meta:
         ordering = ['-created_at'] # Ordena os objetos por data de criação, do mais recente para o mais antigo/decrescente.
