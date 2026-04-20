@@ -104,10 +104,10 @@
         <a href="{% url 'car_detail' car.pk %}">
           <div class="car-card">
             {% if car.photo %}
-              <img src="{{ car.photo.url }}" alt="{{ car.model }}">
+              <img src="{{ car.photo.url }}" alt="{{ car.model }} - {{ car.brand }}">
             {% else %}
               <div style="height: 200px; display: flex; align-items: center; justify-content: center; background: #ccc;">
-                <p>Foto não disponível</p>
+                <p class="no-photo">Foto não disponível</p>
               </div>
             {% endif %}
             <h2>{{ car.brand }} {{ car.model }}</h2>
